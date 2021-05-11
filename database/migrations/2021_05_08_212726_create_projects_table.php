@@ -17,6 +17,11 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
+            $table->text('general_notes');
+            $table->boolean('completed')->default(false);
+            $table->boolean('archived')->default(false);
+            $table->json('images')->nullable();
+            $table->json('files')->nullable();
             $table->foreignId('owner_id');
 
             $table->foreign('owner_id')
@@ -25,6 +30,8 @@ class CreateProjectsTable extends Migration
                                 ->onDelete('cascade');
 
             $table->timestamps();
+
+            
         });
     }
 

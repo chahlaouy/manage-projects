@@ -17,7 +17,7 @@
                 </div>
                 <a href="/projects/create" class="block rounded text-white px-12 py-2 bg-indigo-500 focus:outline-none hover:bg-indigo-600"> {{ __('Invite to project') }} </a>
             </div>
-        </header>
+        </header> 
     </x-slot>
     <div x-data="{showModal : false}">
         <div x-show="showModal" class="animate__animated absolute top-0 right-0 w-full min-h-screen z-50 py-12 bg-gray-900 bg-opacity-10" :class="showModal ? 'animate__slideInUp' : ''">
@@ -31,15 +31,19 @@
         <div class="flex">
             <div id="tasks" class="flex-1 mr-8">
     
-                <livewire:tasks :project="$project"/>
+                <livewire:tasks :project="$project"/> 
                
                 <label class="block">
                     <span class="block text-gray-500 text-lg mb-4">{{ __('General Notes') }}</span>
-                    <textarea class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-indigo-500" rows="8" spellcheck="false"></textarea>
+                    <textarea class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-indigo-500" rows="8" spellcheck="false">
+
+                        {{ $project->general_notes }}
+                    </textarea>
                 </label>
             </div>
             <div class="w-72">
                 @include('layouts.card')
+                <livewire:activity-feed :project="$project" />
             </div>
         </div>
     </div>

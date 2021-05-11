@@ -1,7 +1,7 @@
 <div class="max-w-2xl mx-auto ">
     <div class="bg-white shadow-2xl p-8 rounded-md">
         <h3 class="font-bold text-center uppercase text-3xl text-gray-800 leading-tight my-12">
-            {{ __('Add a task') }}
+            {{ __('Add a project') }}
         </h3>
         
         <form wire:submit.prevent="submitForm">
@@ -64,7 +64,7 @@
             @error('images')
                 <span class="text-red-400">{{$message}}</span>
             @enderror
-            <button type="submit" x-on:click="Livewire.emit('TaskAdded')" class="rounded text-white px-12 py-2 bg-indigo-600 focus:outline-none hover:bg-indigo-700 mr-4">
+            <button x-on:click="Livewire.emit('ProjectAdded')" type="submit" class="rounded text-white px-12 py-2 bg-indigo-600 focus:outline-none hover:bg-indigo-700 mr-4">
                 {{__('Submit')}}
             </button>
             <a href="#" x-on:click="showModal = false"> {{__('Cancel')}} </a>

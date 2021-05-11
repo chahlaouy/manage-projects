@@ -21,9 +21,9 @@ class Task extends Model
         return $this->belongsTo(Project::class);
     }
 
-    public function activities(){
+    public function activity(){
 
-        return $this->morphMany(Task::class, 'subject');
+        return $this->morphMany(Activity::class, 'subject');
     }
 
     public function complete(){
@@ -34,6 +34,13 @@ class Task extends Model
     public function incomplete(){
         $this->update([
             'completed' => false 
+        ]);
+    }
+
+    public function recordActivity($type){
+        return $this->activity()->create([
+            'description' => $type,
+            'project_id' => $this->project->id
         ]);
     }
 }

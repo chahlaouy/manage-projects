@@ -9,6 +9,7 @@ class Tasks extends Component
 {
     public $project;
     public $tasks;
+    protected $listeners = ['TaskAdded' => 'taskAdded'];
 
     public function toggleComplete($taskId){
         $task = Task::find($taskId);
@@ -21,6 +22,11 @@ class Tasks extends Component
         $task->incomplete();
 
     }
+
+    public function taskAdded(){
+        
+    }
+
     public function render()
     {
         $this->tasks = $this->project->tasks;

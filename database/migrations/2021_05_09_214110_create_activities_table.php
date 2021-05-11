@@ -15,7 +15,9 @@ class CreateActivitiesTable extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
+            $table->string('description');
             $table->foreignId('project_id');
+
             $table->nullableMorphs('subject');
 
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');

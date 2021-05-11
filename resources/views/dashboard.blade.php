@@ -4,9 +4,6 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-
-    
-    <h1 class="text-2xl font-bold mb-4">DIGiTEAM</h1>
-    <a href="/projects"> {{__('My projects')}} </a>
+    <a href="/projects" class="text-2xl font-bold leading-loose tracking-wide"> {{__('My projects')}} </a>
       
 </x-app-layout>

@@ -1,12 +1,10 @@
 <div>
-
-    @foreach ($tasks as $task)
-        
+    @forelse ($tasks as $task)    
         <div class="bg-white py-4 flex items-center justify-between rounded shadow-md mb-8">
             <h2 class="text-lg border-l-4 border-indigo-500 px-2"> {{ $task->description }} </h2>
         
             <div class="flex items-center">
-                <span class="text-gray-400 mr-4">
+                <span class="text-gray-400 mr-4"> 
                     {{ $task->created_at->diffForHumans() }}
                 </span>
                 <label class="inline-flex items-center">
@@ -14,5 +12,11 @@
                 </label>
             </div>
         </div>
-    @endforeach
+
+    @empty
+        <div class="mb-8">
+            {{ __('You have no tasks yet create one') }}
+        </div>
+    @endforelse
+
 </div>

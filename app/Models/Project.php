@@ -11,6 +11,11 @@ class Project extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'images' => 'array',
+        'files' => 'array',
+    ];
+    
     public function owner(){
 
         return $this->belongsTo(User::class, 'owner_id');
@@ -36,10 +41,10 @@ class Project extends Model
         return $this->hasMany(Activity::class)->latest('updated_at');
     }
 
-    public function recordActivity($description){
+    public function recordActivity($type){
 
         return $this->activities()->create([
-            'description' => $description
+            'description' => $type
         ]);
     }
 }

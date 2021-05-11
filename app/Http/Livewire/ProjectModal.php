@@ -5,13 +5,10 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class TaskModal extends Component
+class ProjectModal extends Component
 {
     use WithFileUploads;
 
-    
-
-    public $project;
     public $images = [];
     public $description;
     public $general_notes;
@@ -29,21 +26,20 @@ class TaskModal extends Component
     {
         $this->validate();
         
-        $task = $this->project->tasks()->create([
+        auth()->user()->projects()->create([
             'title' => $this->title,
             'description' => $this->description,
             'general_notes' => $this->general_notes,
             'files' => $this->uploadFiles(), 
             'images' => $this->uploadImages(),
         ]);
-        
     }
 
     protected function uploadImages(){
 
         $images = [];
         if($this->images){
-            $path = "/" . "images/" . "{$this->project->title}" . "/" ."{$this->title}";
+            $path = '/' . 'images/' . "{$this->title}";
             foreach ($this->images as $image) {
                 $name= time() . '.' . $image->getClientOriginalName();
                 array_push($images, $name);
@@ -57,7 +53,7 @@ class TaskModal extends Component
         $files = [];
 
         if($this->files){
-            $path = "/" . "files/" . "{$this->project->title}" . "/" . "{$this->title}";
+            $path = "/" . "files/" . "{$this->title}";
             foreach ($this->files as $file) {
                 $name= time() . '.' . $file->getClientOriginalName();
                 array_push($files, $name);
@@ -68,6 +64,6 @@ class TaskModal extends Component
     }
     public function render()
     {
-        return view('livewire.task-modal');
+        return view('livewire.project-modal');
     }
 }

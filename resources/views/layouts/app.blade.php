@@ -8,16 +8,17 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
         @livewireStyles
-
+        
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <!-- Scripts -->
         
     </head>
-    <body class="font-sans antialiased text-gray-800 text-sm">
+    <body class="text-gray-800 text-sm">
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
@@ -42,6 +43,7 @@
                 
             </main>
         </div>
+        
         <script src="{{ asset('js/app.js') }}" defer></script>
         @livewireScripts
     </body>
